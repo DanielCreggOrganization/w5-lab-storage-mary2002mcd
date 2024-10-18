@@ -1,4 +1,3 @@
-<!-- src/app/home/home.page.html -->
 <ion-header>
   <ion-toolbar>
     <ion-title>Storage Demo</ion-title>
@@ -14,7 +13,14 @@
     <ion-label position="floating">Value</ion-label>
     <ion-input [(ngModel)]="value"></ion-input>
   </ion-item>
+  
   <ion-button expand="full" (click)="setItem()">Set Item</ion-button>
   <ion-button expand="full" (click)="getItem()">Get Item</ion-button>
+  <ion-button expand="full" (click)="removeItem()">Remove Item</ion-button>
+  <ion-button expand="full" (click)="clearStorage()">Clear Storage</ion-button>
+  <ion-button expand="full" (click)="getAllKeys()">Get All Keys</ion-button>
+  <ion-button expand="full" (click)="getLength()">Get Storage Length</ion-button>
+  <ion-button expand="full" (click)="forEachItem()">Show All Items</ion-button>
+
   <p>{{ output }}</p>
 </ion-content>
