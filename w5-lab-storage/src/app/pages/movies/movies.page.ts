@@ -15,7 +15,8 @@ import { MovieEditModal } from './movie-edit-modal.component';
 export class MoviesPage implements OnInit {
   movieName: string = '';
   releaseYear: string = '';
-  movies: { name: string; year: string }[] = [];
+  genre: string = ''; 
+  movies: { name: string; year: string; genre?: string }[] = [];
   errorMessage: string = '';
 
   constructor(private storageService: StorageService, private modalController: ModalController) {}
@@ -25,6 +26,22 @@ export class MoviesPage implements OnInit {
   }
 
   async addMovie() {
+    if (this.movieName && this.releaseYear) {
+      const movie = { name: this.movieName, year: this.releaseYear, genre: this.genre }; // Add genre to movie
+      this.movies.push(movie);
+      try {
+        await this.storageService.set('movies', this.movies);
+        this.movieName = '';
+        this.releaseYear = '';
+        this.genre = ''; // Reset genre field
+        this.errorMessage = '';
+      } catch (error) {
+        console.error('Error adding movie:', error);
+        this.errorMessage = 'Error adding movie. Please try again.';
+      }
+    } else {
+      this.errorMessage = 'Movie name and release year are required.';
+    }
     if (this.movieName && this.releaseYear) {
       const movie = { name: this.movieName, year: this.releaseYear };
       this.movies.push(movie);

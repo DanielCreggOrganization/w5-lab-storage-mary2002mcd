@@ -13,6 +13,10 @@
     <ion-label position="floating">Release Year</ion-label>
     <ion-input [(ngModel)]="releaseYear"></ion-input>
   </ion-item>
+  <ion-item>
+    <ion-label position="floating">Genre</ion-label>
+    <ion-input [(ngModel)]="genre"></ion-input>
+  </ion-item>
   <ion-button expand="full" (click)="addMovie()">Add Movie</ion-button>
 
   <ion-list>
@@ -21,6 +25,7 @@
         <ion-label>
           <h2>{{ movie.name }}</h2>
           <p>{{ movie.year }}</p>
+          <ion-chip *ngIf="movie.genre">{{ movie.genre }}</ion-chip> <!-- Show genre -->
         </ion-label>
       </ion-item>
       <ion-item-options side="end">
