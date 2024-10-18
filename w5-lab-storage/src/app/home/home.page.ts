@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { StorageService } from '../services/storage.service'; // Import the storage service
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [IonicModule, FormsModule, RouterLink],
 })
 export class HomePage {
   key: string = '';
